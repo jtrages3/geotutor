@@ -434,7 +434,8 @@
       addBotMessage(fmt(reply));
     } catch(err) {
       document.getElementById('typing').remove();
-      addBotMessage('<span style="color:var(--red)">❌ ' + esc(err.message) + '</span>');
+      addBotMessage('<span style="color:var(--red)">❌ Error: ' + esc(err.message) + 
+      ' | API key: ' + (apiKey ? apiKey.substring(0,10) + '...' : 'MISSING') + '</span>');
     }
     document.getElementById('send-btn').disabled = false;
     inp.focus();
