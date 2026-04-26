@@ -19,7 +19,6 @@
   }
   body { font-family: 'Nunito', sans-serif; background: var(--gray-bg); min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
 
-  /* API GATE */
   #api-gate { min-height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; padding: 24px; background: linear-gradient(135deg, #E1F5EE 0%, #F7F6F2 60%); }
   #api-card { background: var(--white); border-radius: 20px; padding: 40px; max-width: 480px; width: 100%; box-shadow: var(--shadow-lg); text-align: center; }
   #api-card .logo { font-family: 'Fredoka One', sans-serif; font-size: 36px; color: var(--green); margin-bottom: 4px; }
@@ -34,7 +33,6 @@
   #api-error { color: var(--red); font-size: 13px; margin-top: 8px; display: none; }
   .api-note { background: var(--amber-light); border-radius: var(--radius-sm); padding: 12px 16px; font-size: 13px; color: #854F0B; margin-top: 20px; text-align: left; line-height: 1.5; }
 
-  /* APP */
   #app { display: none; width: 100%; max-width: 820px; min-height: 100vh; flex-direction: column; }
   #app-header { background: var(--green); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
   .header-left { display: flex; align-items: center; gap: 12px; }
@@ -44,17 +42,14 @@
   #logout-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 5px 14px; font-size: 12px; color: var(--white); cursor: pointer; font-family: 'Nunito', sans-serif; }
   #logout-btn:hover { background: rgba(255,255,255,0.25); }
 
-  /* TABS */
   #tab-nav { background: var(--white); border-bottom: 1px solid var(--gray-border); display: flex; }
   .tab { flex: 1; padding: 12px 0; font-size: 14px; font-weight: 600; color: var(--text-muted); cursor: pointer; border-bottom: 2.5px solid transparent; text-align: center; transition: all 0.15s; }
   .tab:hover { color: var(--green); }
   .tab.active { color: var(--green); border-bottom-color: var(--green); }
 
-  /* PANELS */
   .panel { display: none; flex: 1; flex-direction: column; }
   .panel.active { display: flex; }
 
-  /* PARENT PANEL */
   #parent-panel { padding: 24px; gap: 20px; overflow-y: auto; }
   .section-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--gray-border); padding: 20px 24px; box-shadow: var(--shadow); }
   .section-card h2 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
@@ -89,7 +84,6 @@
   .ch-del:hover { background: var(--red-light); }
   .ch-empty { font-size: 13px; color: var(--text-muted); font-style: italic; text-align: center; padding: 14px; }
 
-  /* TUTOR PANEL */
   #tutor-panel { background: var(--gray-bg); }
   #active-ch-bar { background: var(--green-light); border-bottom: 1px solid var(--green-mid); padding: 8px 16px; font-size: 13px; color: var(--green-darker); display: none; }
   #active-ch-bar strong { font-weight: 700; }
@@ -131,7 +125,6 @@
 </head>
 <body>
 
-<!-- API GATE -->
 <div id="api-gate">
   <div id="api-card">
     <div class="logo">📐 GeoTutor</div>
@@ -141,11 +134,10 @@
     <input type="password" id="api-key-input" placeholder="sk-ant-...">
     <div id="api-error">Key should start with "sk-ant-" or "sk-".</div>
     <button id="api-save-btn" onclick="saveKey()">Start GeoTutor →</button>
-    <div class="api-note">🔑 Get a key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>. Set a spending limit to control costs — tutoring sessions use very little.</div>
+    <div class="api-note">🔑 Get a key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>. Set a spending limit to control costs.</div>
   </div>
 </div>
 
-<!-- MAIN APP -->
 <div id="app">
   <div id="app-header">
     <div class="header-left">
@@ -163,15 +155,13 @@
     <div class="tab" onclick="switchTab('tutor')">📐 Tutor</div>
   </div>
 
-  <!-- PARENT PANEL -->
   <div id="parent-panel" class="panel active">
-
     <div class="section-card">
       <h2>📖 Add chapter content</h2>
       <div class="desc">Type the concepts, definitions, theorems, and formulas from the current chapter. Skip all figures, diagrams, and worked examples.</div>
       <div class="hint-box">
         <strong>What to include:</strong> vocabulary terms, definitions, theorems, and formulas.<br>
-        <strong>What to skip:</strong> figures, diagrams, worked examples, and any handwritten notes.<br>
+        <strong>What to skip:</strong> figures, diagrams, worked examples, and handwritten notes.<br>
         <strong>Example:</strong> "Acute angle: less than 90°. Right angle: exactly 90°. Complementary angles sum to 90°."
       </div>
       <div class="field-row">
@@ -194,26 +184,15 @@
 
     <div class="section-card">
       <h2>💬 Tutor notes</h2>
-      <div class="desc">Optional: add corrections, extra context, or instructions for the tutor — for example, corrections to anything it might get wrong, or notes about your kid's learning style.</div>
+      <div class="desc">Optional: add corrections, extra context, or instructions for the tutor.</div>
       <textarea class="content-box short" id="tutor-notes" placeholder="e.g. My son is 14. Encourage him to show his work. Do not go beyond the concepts listed in the chapter content."></textarea>
       <div class="btn-row">
         <button class="btn-green" onclick="saveNotes()">Save notes</button>
         <span class="save-flash" id="notes-flash">✅ Saved!</span>
       </div>
     </div>
-
-    <div class="section-card">
-      <h2>📋 Sharing with your kid</h2>
-      <div class="desc" style="margin-bottom:0">
-        <strong>Option 1 — GitHub Pages:</strong> Upload this file as <code>index.html</code> to a GitHub repo, enable Pages in Settings, share the URL.<br><br>
-        <strong>Option 2 — Local:</strong> Send your kid this HTML file — he can double-click it in any browser. He'll need the API key to log in.<br><br>
-        <strong>Note:</strong> Chapter content and tutor notes are saved per-browser. If your kid uses a different device, you'll need to re-enter them — keep a copy of your content in a notes app just in case.
-      </div>
-    </div>
-
   </div>
 
-  <!-- TUTOR PANEL -->
   <div id="tutor-panel" class="panel">
     <div id="active-ch-bar"></div>
     <div id="no-content-bar">⚠️ No chapter content yet — add some in Parent Setup first.</div>
@@ -252,13 +231,12 @@
   };
 
   const modePrompts = {
-    teach: 'The student wants to LEARN a concept. Explain it clearly using simple language and one concrete example. Keep it to 4-5 sentences. End by asking if they want a practice problem. ONLY teach concepts explicitly listed in the chapter content below — do not introduce anything outside it.',
-    quiz:  'The student wants to be QUIZZED. Generate ONE practice problem using ONLY the concepts from the chapter content below. After they answer, say clearly if correct and explain the full solution. Do not use concepts outside the chapter content.',
-    step:  'The student wants STEP-BY-STEP help solving a problem. Walk through it one step at a time, one step per message. Ask them to confirm before moving on. Use only concepts from the chapter content.',
-    hint:  'The student needs a HINT only — do not give the answer. Give a gentle 1-2 sentence nudge using only concepts from the chapter content.'
+    teach: 'The student wants to LEARN a concept. Explain it clearly using simple language and one concrete example. Keep it to 4-5 sentences. End by asking if they want a practice problem. ONLY teach concepts explicitly listed in the chapter content below.',
+    quiz:  'The student wants to be QUIZZED. Generate ONE practice problem using ONLY the concepts from the chapter content below. After they answer, say clearly if correct and explain the full solution.',
+    step:  'The student wants STEP-BY-STEP help. Walk through one problem at a time, one step per message. Ask them to confirm before moving on. Use only concepts from the chapter content.',
+    hint:  'The student needs a HINT only. Give a gentle 1-2 sentence nudge without revealing the answer. Use only concepts from the chapter content.'
   };
 
-  // ── API KEY ──
   function saveKey() {
     const val = document.getElementById('api-key-input').value.trim();
     if (!val.startsWith('sk-')) { document.getElementById('api-error').style.display = 'block'; return; }
@@ -284,7 +262,6 @@
     addBotMessage("Hi! I'm GeoTutor 📐<br><br>Ready to help with geometry! Pick a mode above and ask me anything, or say <strong>\"teach me\"</strong> followed by any topic from your chapter.");
   }
 
-  // ── STORAGE ──
   function loadFromStorage() {
     chapters = JSON.parse(localStorage.getItem('gt_chapters') || '[]');
     activeIdx = parseInt(localStorage.getItem('gt_active_idx') || '0');
@@ -301,7 +278,6 @@
     localStorage.setItem('gt_active_idx', activeIdx);
   }
 
-  // ── CHAPTERS ──
   function saveChapter() {
     const name = document.getElementById('ch-name').value.trim();
     const content = document.getElementById('ch-content').value.trim();
@@ -330,7 +306,7 @@
   }
 
   function deleteChapter(i) {
-    if (!confirm(`Remove "${chapters[i].name}"?`)) return;
+    if (!confirm('Remove "' + chapters[i].name + '"?')) return;
     chapters.splice(i, 1);
     if (activeIdx >= chapters.length) activeIdx = Math.max(0, chapters.length - 1);
     persist();
@@ -345,13 +321,12 @@
   function renderChapterList() {
     const list = document.getElementById('chapter-list');
     if (chapters.length === 0) { list.innerHTML = '<div class="ch-empty">No chapters saved yet.</div>'; return; }
-    list.innerHTML = chapters.map((ch, i) => `
-      <div class="ch-item ${i === activeIdx ? 'active-ch' : ''}" onclick="loadChapter(${i})">
-        <span style="font-size:16px">📄</span>
-        <span class="ch-name">${esc(ch.name)}</span>
-        <span class="ch-meta">${wordCount(ch.content)} words</span>
-        <button class="ch-del" onclick="event.stopPropagation();deleteChapter(${i})">✕</button>
-      </div>`).join('');
+    list.innerHTML = chapters.map((ch, i) => '<div class="ch-item ' + (i === activeIdx ? 'active-ch' : '') + '" onclick="loadChapter(' + i + ')">' +
+      '<span style="font-size:16px">📄</span>' +
+      '<span class="ch-name">' + esc(ch.name) + '</span>' +
+      '<span class="ch-meta">' + wordCount(ch.content) + ' words</span>' +
+      '<button class="ch-del" onclick="event.stopPropagation();deleteChapter(' + i + ')">✕</button>' +
+      '</div>').join('');
   }
 
   function saveNotes() {
@@ -368,7 +343,6 @@
 
   function wordCount(str) { return str.trim().split(/\s+/).filter(Boolean).length; }
 
-  // ── TABS ──
   function switchTab(name) {
     document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', ['parent','tutor'][i] === name));
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
@@ -382,7 +356,7 @@
     if (chapters.length > 0 && chapters[activeIdx]) {
       const ch = chapters[activeIdx];
       chBar.style.display = 'block';
-      chBar.innerHTML = `📖 Active: <strong>${esc(ch.name)}</strong> — ${wordCount(ch.content)} words loaded`;
+      chBar.innerHTML = '📖 Active: <strong>' + esc(ch.name) + '</strong> — ' + wordCount(ch.content) + ' words loaded';
       noBar.style.display = 'none';
     } else {
       chBar.style.display = 'none';
@@ -391,7 +365,6 @@
     setTimeout(() => { document.getElementById('chat-area').scrollTop = 99999; }, 50);
   }
 
-  // ── MODE ──
   function setMode(btn) {
     document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -399,12 +372,11 @@
     document.getElementById('mode-desc-bar').textContent = modeDescs[mode];
   }
 
-  // ── CHAT ──
   function addBotMessage(html) {
     const ca = document.getElementById('chat-area');
     const d = document.createElement('div');
     d.className = 'msg bot';
-    d.innerHTML = `<div class="avatar bot">📐</div><div class="bubble">${html}</div>`;
+    d.innerHTML = '<div class="avatar bot">📐</div><div class="bubble">' + html + '</div>';
     ca.appendChild(d); ca.scrollTop = ca.scrollHeight;
   }
 
@@ -412,7 +384,7 @@
     const ca = document.getElementById('chat-area');
     const d = document.createElement('div');
     d.className = 'msg bot'; d.id = 'typing';
-    d.innerHTML = `<div class="avatar bot">📐</div><div class="bubble"><div class="dots"><span></span><span></span><span></span></div></div>`;
+    d.innerHTML = '<div class="avatar bot">📐</div><div class="bubble"><div class="dots"><span></span><span></span><span></span></div></div>';
     ca.appendChild(d); ca.scrollTop = ca.scrollHeight;
   }
 
@@ -427,7 +399,7 @@
     const ca = document.getElementById('chat-area');
     const userMsg = document.createElement('div');
     userMsg.className = 'msg user';
-    userMsg.innerHTML = `<div class="avatar user">🎓</div><div class="bubble">${esc(text)}</div>`;
+    userMsg.innerHTML = '<div class="avatar user">🎓</div><div class="bubble">' + esc(text) + '</div>';
     ca.appendChild(userMsg); ca.scrollTop = ca.scrollHeight;
 
     history.push({ role: 'user', content: text });
@@ -437,20 +409,11 @@
 
     const ch = chapters.length > 0 ? (chapters[activeIdx] || chapters[0]) : null;
     const chText = ch
-      ? `\n\nCHAPTER CONTENT — use ONLY these concepts, definitions, and formulas. Do not introduce anything not listed here:\nChapter: ${ch.name}\n\n${ch.content}`
+      ? '\n\nCHAPTER CONTENT — use ONLY these concepts. Do not introduce anything not listed here:\nChapter: ' + ch.name + '\n\n' + ch.content
       : '\n\nNo chapter content provided. Use only standard beginner high school geometry.';
-    const notesText = tutorNotes ? `\n\nPARENT NOTES (follow these carefully): ${tutorNotes}` : '';
+    const notesText = tutorNotes ? '\n\nPARENT NOTES (follow carefully): ' + tutorNotes : '';
 
-    const system = `You are GeoTutor, a warm, patient, and encouraging geometry tutor for a high school student just beginning geometry.
-
-Current mode: ${modePrompts[mode]}
-
-STRICT RULES:
-- Stay ONLY within the chapter content provided — never introduce formulas, theorems, or concepts not listed there
-- Never reference or describe figures, diagrams, or worked examples from the book
-- Write all math in plain text: e.g. "Area = ½ × base × height"
-- Be encouraging and clear — this student is a beginner
-- Keep responses focused and appropriately concise${chText}${notesText}`;
+    const system = 'You are GeoTutor, a warm, patient, and encouraging geometry tutor for a high school student just beginning geometry.\n\nCurrent mode: ' + modePrompts[mode] + '\n\nSTRICT RULES:\n- Stay ONLY within the chapter content provided\n- Never reference figures, diagrams, or worked examples\n- Write math in plain text: e.g. "Area = half times base times height"\n- Be encouraging and clear' + chText + notesText;
 
     try {
       const res = await fetch('https://api.anthropic.com/v1/messages', {
@@ -461,27 +424,25 @@ STRICT RULES:
           'anthropic-version': '2023-06-01',
           'anthropic-dangerous-direct-browser-calls': 'true'
         },
-        body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1000, system, messages: history.slice(-16) })
+        body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1000, system: system, messages: history.slice(-16) })
       });
       const data = await res.json();
-      document.getElementById('typing')?.remove();
+      document.getElementById('typing').remove();
       if (data.error) throw new Error(data.error.message);
-      const reply = data.content?.[0]?.text || 'Something went wrong — please try again.';
+      const reply = data.content[0].text;
       history.push({ role: 'assistant', content: reply });
       addBotMessage(fmt(reply));
     } catch(err) {
-      document.getElementById('typing')?.remove();
-      addBotMessage(`<span style="color:var(--red)">❌ ${esc(err.message)}</span>`);
+      document.getElementById('typing').remove();
+      addBotMessage('<span style="color:var(--red)">❌ ' + esc(err.message) + '</span>');
     }
     document.getElementById('send-btn').disabled = false;
     inp.focus();
   }
 
-  // ── INIT ──
   window.addEventListener('load', () => {
     const stored = localStorage.getItem('gt_key');
     if (stored) { apiKey = stored; startApp(); }
-
     document.getElementById('api-key-input').addEventListener('keydown', e => { if (e.key === 'Enter') saveKey(); });
     document.getElementById('user-input').addEventListener('keydown', e => {
       if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
